@@ -71,7 +71,6 @@ async def send_scheduled_recommendations(bot):
         elif last_notification is None:
             last_notification = datetime.datetime.min  # Если уведомлений не было, отправим первое сразу
 
-        # Определяем, когда можно отправлять уведомления
         if notif_freq == "daily":
             delta = timedelta(days=1)
         elif notif_freq == "3days":
@@ -82,7 +81,7 @@ async def send_scheduled_recommendations(bot):
             continue
 
         if (current_time - last_notification) < delta:
-            continue  # Уведомление пока не должно отправляться
+            continue
 
         logging.info(f"Отправляем интервальные рекомендации пользователю {user_id}")
 
